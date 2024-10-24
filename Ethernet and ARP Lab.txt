@@ -1,0 +1,55 @@
+Link: https://gaia.cs.umass.edu/kurose_ross/wireshark.php 
+Ethernet and ARP (8.1 (Word))
+802.11 WiFi (8.1 (Word))
+
+Lab 2.1: Ethernet and ARP
+1. What is the 48-bit Ethernet address of your computer?
+	Answer: e0:be:03:3f:b7:c8 (Source Address)
+
+2. What is the 48-bit destination address in the Ethernet frame?  Is this the Ethernet address of gaia.cs.umass.edu? (Hint: the answer is no).  What device has this as its Ethernet address? [Note: this is an important question, and one that students sometimes get wrong.  Re-read pages 483-484 in the text and make sure you understand the answer here.]
+	Answer: 1c:61:b4:47:3f:f0 (Router Address, not server as stated in hint)
+
+3. What is the hexadecimal value for the two-byte Frame type field in the Ethernet frame carrying the HTTP GET request?  What upper layer protocol does this correspond to?
+	Answer: 0x0800, the frame is encapsulating an IPv4 datagram. This mean that the Ethernet frame is carrying data from the internet Protocol (IP) layer. 
+
+4. How many bytes from the very start of the Ethernet frame does the ASCII “G” in “GET” appear in the Ethernet frame? Do not count any preamble bits in your count, i.e., assume that the Ethernet frame begins with the Ethernet frame's destination address.
+	Answer: 54 bytes
+		6 bytes (dest. adress) + 6 bytes (source address) + 2 bytes (IPv4)
+		+ 20 bytes (IP header) + 20 bytes (TCP header) 
+
+5. What is the value of the Ethernet source address?  Is this the address of your computer, or of gaia.cs.umass.edu (Hint: the answer is no).  What device has this as its Ethernet address?
+	Answer: 1c:61:b4:47:3f:f0 (It still use the same intermediary device, hence it is the Router Address)
+
+6. What is the destination address in the Ethernet frame?  Is this the Ethernet address of your computer?
+	Answer: e0:be:03:3f:b7:c8
+
+7. Give the hexadecimal value for the two-byte Frame type field. What upper layer protocol does this correspond to?
+	Answer: 0x0800 (IPv4), IP layer
+
+8. How many bytes from the very start of the Ethernet frame does the ASCII “O” in “OK” (i.e., the HTTP response code) appear in the Ethernet frame? Do not count any preamble bits in your count, i.e., assume that the Ethernet frame begins with the Ethernet frame's destination address.
+	Answer: 67 bytes
+		(54 bytes of MAC + IP + TCP) + (13 bytes before O in OK) 
+
+9. How many Ethernet frames (each containing an IP datagram, each containing a TCP segment) carry data that is part of the complete HTTP “OK 200 ...” reply message?
+	Answer: 4 segments
+
+10. How many entries are stored in your ARP cache?
+	Answer: 9 entries
+	Interface: 192.168.36.1 --- 0x9
+  	Internet Address      Physical Address      Type
+  	192.168.36.254        00-50-56-f7-bb-fa     dynamic
+  	192.168.36.255        ff-ff-ff-ff-ff-ff     static
+  	224.0.0.2             01-00-5e-00-00-02     static
+  	224.0.0.22            01-00-5e-00-00-16     static
+  	224.0.0.251           01-00-5e-00-00-fb     static
+  	224.0.0.252           01-00-5e-00-00-fc     static
+  	239.255.102.18        01-00-5e-7f-66-12     static
+  	239.255.255.250       01-00-5e-7f-ff-fa     static
+  	255.255.255.255       ff-ff-ff-ff-ff-ff     static
+
+11. What is contained in each displayed entry of the ARP cache?
+	Answer: Internet Address, Physical Address, and Type
+
+
+
+
